@@ -31,19 +31,19 @@ public class AuthService {
     private SessionRepository sessionRepository;
     // object of above two will be created by spring jpa. who will create the object of bcrypt? we should create.
     // where? SpringSceurity class
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    //private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
-    public AuthService(UserRepository userRepository, SessionRepository sessionRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public AuthService(UserRepository userRepository, SessionRepository sessionRepository) {
         this.userRepository = userRepository;
         this.sessionRepository = sessionRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        //this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     public UserDto signUp(String email, String password) {
         User user = new User();
         user.setEmail(email);
-        user.setPassword(bCryptPasswordEncoder.encode(password));
+        //user.setPassword(bCryptPasswordEncoder.encode(password));
 
         User savedUser = userRepository.save(user);
 
@@ -60,9 +60,9 @@ public class AuthService {
         User user = userOptional.get();
         //validation
         //if (!user.getPassword().equals(password)) { after encrypting the password
-        if(!bCryptPasswordEncoder.matches(password, user.getPassword())){
+        /*if(!bCryptPasswordEncoder.matches(password, user.getPassword())){
             return null;
-        }
+        }*/
         //String token = RandomStringUtils.randomAlphanumeric(30);
 
        /* String message = "{\n" +
