@@ -17,13 +17,13 @@ import org.springframework.security.config.annotation.web.configurers.oauth2.ser
 public class SpringSecurity {
     // --- Client-----Spring Security----- Controller
 
-    @Bean
+   /* @Bean
     public SecurityFilterChain filteringCriteria(HttpSecurity http) throws Exception {
         http.cors().disable();
         http.csrf().disable();
         http.authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll());
         return http.build();
-    }
+    }*/
 
     // Role Service which two different DB Production and Staging
     /*
@@ -39,6 +39,7 @@ public class SpringSecurity {
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
+
         return new BCryptPasswordEncoder();
     }
 
